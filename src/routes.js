@@ -23,6 +23,11 @@ import Icons from "views/Icons.js";
 import Maps from "views/Maps.js";
 import Notifications from "views/Notifications.js";
 import Upgrade from "views/Upgrade.js";
+import Waiting from "views/waiting.js";
+import Accepted from "views/accepted.js";
+import Setting from "views/setting.js";
+import SignUp from "views/signup.js"
+import SignIn from "views/signin.js"
 
 const dashboardRoutes = [
   {
@@ -33,6 +38,7 @@ const dashboardRoutes = [
     component: Upgrade,
     layout: "/admin"
   },
+  
   {
     path: "/dashboard",
     name: "Dashboard",
@@ -80,6 +86,34 @@ const dashboardRoutes = [
     name: "Notifications",
     icon: "nc-icon nc-bell-55",
     component: Notifications,
+    layout: "/admin"
+  },
+  {
+    path: "/waiting",
+    name: "Đang chờ",
+    icon: "nc-icon nc-watch-time",
+    component: Waiting,
+    layout: "/admin"
+  },
+  {
+    path: "/accepted",
+    name: "Đã chấp nhận",
+    icon: "nc-icon nc-check-2",
+    component: Accepted,
+    layout: "/admin"
+  },
+  {
+    path: "/setting",
+    name: "Cài đặt",
+    icon: "nc-icon nc-settings-gear-64",
+    component: Setting,
+    layout: "/admin"
+  },
+  {
+    path: "/signin",
+    name: "Đăng nhập",
+    icon: "nc-icon nc-settings-gear-64",
+    component: SignIn,
     layout: "/admin"
   }
 ];

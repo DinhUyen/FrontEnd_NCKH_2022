@@ -406,12 +406,12 @@ function Icons() {
                       <p>nc-notification-70</p>
                     </div>
                   </Col>
-                  <Col className="font-icon-list" lg="2" md="3" sm="4" xs="6">
+                  {/* <Col className="font-icon-list" lg="2" md="3" sm="4" xs="6">
                     <div className="font-icon-detail">
                       <i className="nc-icon nc-palette"></i>
                       <p>nc-palette</p>
                     </div>
-                  </Col>
+                  </Col> */}
                   <Col className="font-icon-list" lg="2" md="3" sm="4" xs="6">
                     <div className="font-icon-detail">
                       <i className="nc-icon nc-paper-2"></i>
