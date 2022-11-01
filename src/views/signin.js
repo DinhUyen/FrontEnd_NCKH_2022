@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/css/login.css"
 function SignIn(){
     return(
     <>
-    <form>
-        <div>
+    <div className="container_signin">
+    <form  className='form signup'>
+        <div className='control'>
         <h3>Sign In</h3>
         <div className="mb-3">
           <label>Email address</label>
@@ -40,11 +42,13 @@ function SignIn(){
           </button>
         </div>
         <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
+          Create <Link to="/signup">Account</Link>
         </p>
         </div>
         
       </form>
+    </div>
+   
 
     </>
     )

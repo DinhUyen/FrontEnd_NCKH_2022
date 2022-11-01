@@ -109,13 +109,6 @@ const dashboardRoutes = [
     component: Setting,
     layout: "/admin"
   },
-  {
-    path: "/signin",
-    name: "Đăng nhập",
-    icon: "nc-icon nc-settings-gear-64",
-    component: SignIn,
-    layout: "/admin"
-  }
 ];
 
 export default dashboardRoutes;

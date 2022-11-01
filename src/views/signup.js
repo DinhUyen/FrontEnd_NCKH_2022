@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/css/login.css"
 function SignUp(){
     return(
     <>
-    <form>
+     <div className="container_signup">
+     <form  className='form signup'>
+        <div className='control'>
         <h3>Sign Up</h3>
         <div className="mb-3">
           <label>First name</label>
@@ -39,9 +42,12 @@ function SignUp(){
           </button>
         </div>
         <p className="forgot-password text-right">
-          Already registered <a href="/sign-in">sign in?</a>
+          Already registered <Link to="/login">sign in?</Link>
         </p>
+        </div>
       </form>
+     </div>
+    
 
     </>
     )
