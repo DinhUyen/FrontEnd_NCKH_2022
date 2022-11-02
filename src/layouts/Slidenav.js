@@ -25,7 +25,7 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 
-import sidebarImage from "assets/img/sidebar-3.jpg";
+import sidebarImage from "assets/img/sidebar-0.jpg";
 
 function Slidenav() {
   const [image, setImage] = React.useState(sidebarImage);

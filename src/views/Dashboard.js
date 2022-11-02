@@ -20,6 +20,25 @@ function Dashboard() {
   return (
     <>
       <Container fluid>
+      <Row>
+          <Col md="12">
+            <Card>
+              <Card.Header>
+                <Card.Title as="h4">Rà soát lỗ hổng</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                  
+                <div className="typography-line">
+                  <p>
+                  Theo số liệu thống kê tại Việt Nam năm 2019, cứ mỗi 45 phút trôi qua lại có một website bị tấn công. Trang web bị hack không chỉ gây bất tiện cho người dùng, mà còn khiến các doanh nghiệp thiệt hại về doanh thu, danh tiếng.
+                  </p>
+                  <p>Trang web bị hack có thể gây ra một số hậu quả:</p>
+                </div>
+               
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
         <Row>
           <Col lg="3" sm="6">
             <Card className="card-stats">

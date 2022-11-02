@@ -22,26 +22,19 @@ import Typography from "views/Typography.js";
 import Icons from "views/Icons.js";
 import Maps from "views/Maps.js";
 import Notifications from "views/Notifications.js";
-import Upgrade from "views/Upgrade.js";
 import Waiting from "views/waiting.js";
 import Accepted from "views/accepted.js";
 import Setting from "views/setting.js";
 import SignUp from "views/signup.js"
 import SignIn from "views/signin.js"
+import Vulnerability from "views/vulnerability.js"
+import Website from "views/website.js"
+
 
 const dashboardRoutes = [
   {
-    upgrade: true,
-    path: "/upgrade",
-    name: "Upgrade to PRO",
-    icon: "nc-icon nc-alien-33",
-    component: Upgrade,
-    layout: "/admin"
-  },
-  
-  {
     path: "/dashboard",
-    name: "Dashboard",
+    name: "Tổng quan",
     icon: "nc-icon nc-chart-pie-35",
     component: Dashboard,
     layout: "/admin"
@@ -86,6 +79,20 @@ const dashboardRoutes = [
     name: "Notifications",
     icon: "nc-icon nc-bell-55",
     component: Notifications,
+    layout: "/admin"
+  },
+  {
+    path: "/website",
+    name: "Đối tượng rà soát",
+    icon: "nc-icon nc-alien-33",
+    component: Website,
+    layout: "/admin"
+  },
+  {
+    path: "/vulnerability",
+    name: "Rà soát lỗ hổng",
+    icon: "nc-icon nc-compass-05",
+    component: Vulnerability,
     layout: "/admin"
   },
   {
