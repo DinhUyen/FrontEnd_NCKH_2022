@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 
 // react-bootstrap components
 import {
@@ -13,7 +14,18 @@ import {
   Col,
 } from "react-bootstrap";
 
+// get data
+import axiosClient from "service/axiosClient";
 function Accepted() {
+  useEffect(()=>{
+    async function getItem(){
+      const res = await axiosClient.get('users/accepted')
+      console.log(res)
+    }
+    getItem()
+  },[])
+
+
   return (
     <>
       <Container fluid>

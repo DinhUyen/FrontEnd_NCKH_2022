@@ -1,7 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link ,useHistory} from "react-router-dom";
+import {auth} from "service/api/loginApi";
 import "../assets/css/login.css"
 function SignIn(){
+  const [email,setEmail] = useState()
+  const [password,setPassword] = useState()
+  console.log(password,email);
+  const history = useHistory()
+   const handleLogin =(e)=>{
+    e.preventDefault()
+    const data = {email:email,
+      password:password}
+    axios.post('http://185.213.27.86:5000/api/v1/auth/login',data).then(res=>{
+      localStorage.setItem("token",res.data.session_id)
+      history.push('/admin/dashboard')
+    })
+   }
     return(
     <>
     <div className="container_signin">
@@ -11,8 +26,10 @@ function SignIn(){
         <div className="mb-3">
           <label>Email address</label>
           <input
-            type="email"
-            className="form-control"
+            type="email"  
+            value={email}
+            onChange={e=>setEmail(e.target.value)}
+            className="form-control email"
             placeholder="Enter email"
           />
         </div>
@@ -20,8 +37,10 @@ function SignIn(){
           <label>Password</label>
           <input
             type="password"
-            className="form-control"
+            className="form-control password"
             placeholder="Enter password"
+            onChange={e=>setPassword(e.target.value)}
+            value={password}
           />
         </div>
         <div className="mb-3">
@@ -37,7 +56,7 @@ function SignIn(){
           </div>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" onClick={handleLogin} className="btn btn-primary submit">
             Submit
           </button>
         </div>
