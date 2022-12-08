@@ -35,10 +35,14 @@ const login = true;
 root.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/login" render={props=><SignIn/>}/>
-      <Route path="/signup" render={props=><SignUp/>}/>
-      <Route path="/admin" render={(props) => login ? <SlidenavLayout {...props} />: <Redirect to="/login" />} />
-    
+      <Route path="/login" render={(props) => <SignIn />} />
+      <Route path="/signup" render={(props) => <SignUp />} />
+      <Route
+        path="/admin"
+        render={(props) =>
+          login ? <SlidenavLayout {...props} /> : <Redirect to="/login" />
+        }
+      />
     </Switch>
   </BrowserRouter>
 );
