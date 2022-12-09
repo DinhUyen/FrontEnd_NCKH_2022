@@ -2,13 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/login.css"
 function SignUp(){
+    const [email,setEmail] = useState()
+    const [password,setPassword] = useState()
+    console.log(password,email);
+    const history = useHistory()
+    const handleSignUp =(e)=>{
+    e.preventDefault()
+    const data = {email:email,
+      password:password}
+      axios.post('http://185.213.27.86:5000/api/v1/auth/register',data).then(res=>{
+        console.log(res)
+      // localStorage.setItem("token",res.data.session_id)
+        history.push('/login')
+    })
+   }
     return(
     <>
      <div className="container_signup">
      <form  className='form signup'>
         <div className='control'>
         <h3>Sign Up</h3>
-        <div className="mb-3">
+        {/* <div className="mb-3">
           <label>First name</label>
           <input
             type="text"
@@ -19,7 +33,7 @@ function SignUp(){
         <div className="mb-3">
           <label>Last name</label>
           <input type="text" className="form-control" placeholder="Last name" />
-        </div>
+        </div> */}
         <div className="mb-3">
           <label>Email address</label>
           <input
