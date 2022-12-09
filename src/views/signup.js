@@ -1,7 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link ,useHistory} from "react-router-dom";
+import {auth} from "service/api/loginApi";
 import "../assets/css/login.css"
 function SignUp(){
+    const [email,setEmail] = useState()
+    const [password,setPassword] = useState()
+    console.log(password,email);
+    const history = useHistory()
+    const handleSignUp =(e)=>{
+    e.preventDefault()
+    const data = {email:email,
+      password:password}
+      axios.post('http://185.213.27.86:5000/api/v1/auth/register',data).then(res=>{
+        console.log(res)
+      // localStorage.setItem("token",res.data.session_id)
+        history.push('/login')
+    })
+   }
     return(
     <>
      <div className="container_signup">
@@ -9,23 +25,14 @@ function SignUp(){
         <div className='control'>
         <h3>Sign Up</h3>
         <div className="mb-3">
-          <label>First name</label>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="First name"
-          />
-        </div>
-        <div className="mb-3">
-          <label>Last name</label>
-          <input type="text" className="form-control" placeholder="Last name" />
-        </div>
-        <div className="mb-3">
           <label>Email address</label>
           <input
             type="email"
+            value={email}
+            onChange={e=>setEmail(e.target.value)}
             className="form-control"
             placeholder="Enter email"
+            
           />
         </div>
         <div className="mb-3">
@@ -34,10 +41,12 @@ function SignUp(){
             type="password"
             className="form-control"
             placeholder="Enter password"
+            onChange={e=>setPassword(e.target.value)}
+            value={password}
           />
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" onClick={handleSignUp} className="btn btn-primary">
             Sign Up
           </button>
         </div>
