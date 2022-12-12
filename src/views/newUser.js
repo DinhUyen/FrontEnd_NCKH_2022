@@ -1,4 +1,9 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+// import apiAdmin from "../service/Admin/apiAdmin";
+import axiosClient from "service/axiosClient";
+import { useHistory } from "react-router-dom";
 
 // react-bootstrap components
 import {
@@ -10,10 +15,41 @@ import {
   Nav,
   Container,
   Row,
-  Col
+  Col,
+  Alert,
 } from "react-bootstrap";
 
-function User() {
+function newUser() {
+  const [listUsers, setlistUsers] = useState([]);
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [is_accepted, setis_accepted] = useState("");
+  const [role, setrole] = useState("");
+  // useEffect(() => {
+  //   async function addItem() {
+  //     console.log("token");
+  //   }
+
+  //   // await axiosClient.post(`users/create`, data);
+
+  //   // const history = useHistory();
+  //   // return history.push("/admin/user");
+  //   addItem();
+  // }, []);
+  const data = {
+    email: email,
+    password: password,
+    is_accepted: is_accepted,
+    role: role,
+  };
+  console.log(data);
+  async function addItem() {
+    console.log("token");
+
+    const re=await axiosClient.post("users/create",data);
+    console.log(re);
+    alert("helo")
+  }
   return (
     <>
       <Container fluid>
@@ -21,31 +57,31 @@ function User() {
           <Col md="8">
             <Card>
               <Card.Header>
-                <Card.Title as="h4">Edit Profile</Card.Title>
+                <Card.Title as="h4">Thêm người dùng mới</Card.Title>
               </Card.Header>
               <Card.Body>
                 <Form>
                   <Row>
                     <Col className="pr-1" md="12">
                       <Form.Group>
-                        <label>Company (disabled)</label>
+                        <label>Email</label>
                         <Form.Control
-                          defaultValue="Creative Code Inc."
-                          disabled
-                          placeholder="Company"
-                          type="text"
+                          type="Email"
+                          onChange={(event) => setemail(event.target.value)}
+                          value={email}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
                   </Row>
+
                   <Row>
                     <Col className="pr-1" md="12">
                       <Form.Group>
-                        <label>Company (disabled)</label>
+                        <label>Password</label>
                         <Form.Control
-                          defaultValue="Creative Code Inc."
-                          placeholder="Company"
-                          type="text"
+                          type="password"
+                          onChange={(event) => setpassword(event.target.value)}
+                          value={password}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
@@ -53,60 +89,57 @@ function User() {
                   <Row>
                     <Col className="pr-1" md="6">
                       <Form.Group>
-                        <label>running</label>
-                        <Form.Control
-                          defaultValue="Mike"
-                          placeholder="Company"
-                          type="text"
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                    <Col className="pl-1" md="6">
-                      <Form.Group>
-                        <label>finished</label>
-                        <Form.Control
-                          defaultValue="Andrew"
-                          placeholder="Last Name"
-                          type="text"
-                        ></Form.Control>
+                        <label>is_accepted</label>
+                        <br />
+                        <Form.Select
+                          aria-label="Default select example"
+                          value={is_accepted}
+                          onChange={(event) =>
+                            setis_accepted(event.target.value)
+                          }
+                        >
+                          <option>Open this select menu</option>
+                          <option value="True">True</option>
+                          <option value="False">False</option>
+                          {console.log(is_accepted)}
+                        </Form.Select>
                       </Form.Group>
                     </Col>
                   </Row>
                   <Row>
                     <Col className="pr-1" md="6">
                       <Form.Group>
-                        <label>total_alert</label>
+                        <label>Role</label>
                         <Form.Control
-                          defaultValue="Mike"
-                          placeholder="Company"
                           type="text"
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                    <Col className="pl-1" md="6">
-                      <Form.Group>
-                        <label>total_scan</label>
-                        <Form.Control
-                          defaultValue="Andrew"
-                          placeholder="Last Name"
-                          type="text"
+                          onChange={(event) => setrole(event.target.value)}
+                          value={role}
                         ></Form.Control>
                       </Form.Group>
                     </Col>
                   </Row>
                   <Button
                     className="btn-fill pull-right"
+                    variant="info"
+                        type="button"
+                    onClick={() => addItem()}
+                  >
+                    Add
+                  </Button>
+                  <span> </span>
+                  <Button
+                    className="btn-fill pull-right"
                     type="submit"
                     variant="info"
                   >
-                    Update Profile
+                    Back
                   </Button>
                   <div className="clearfix"></div>
                 </Form>
               </Card.Body>
             </Card>
           </Col>
-          <Col md="4">
+          {/* <Col md="4">
             <Card className="card-user">
               <div className="card-image">
                 <img
@@ -160,11 +193,11 @@ function User() {
                 </Button>
               </div>
             </Card>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </>
   );
 }
 
-export default User;
+export default newUser;

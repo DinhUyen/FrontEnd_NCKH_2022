@@ -15,17 +15,19 @@ import {
 } from "react-bootstrap";
 import { data } from "jquery";
 
-function TableList() {
+function TableListUser() {
   const [listUsers, setlistUsers] = useState([]);
   useEffect(() => {
     async function getItem() {
-      const res = await axiosClient.get("users/accepted");
-      console.log(res.data.items);
-      setlistUsers((listUsers) => [res.data.items[0], ...listUsers]);
-      console.log(listUsers);
+      const res = await axiosClient.get("/users/list");
+      //console.log(res.data.items);
+      setlistUsers((listUsers) => [...res.data.items, ...listUsers]);
+     
     }
     getItem();
   }, []);
+ 
+  console.log(listUsers);
   return (
     <>
       <Container fluid>
@@ -33,10 +35,10 @@ function TableList() {
           <Col md="12">
             <Card className="strpied-tabled-with-hover">
               <Card.Header>
-                <Card.Title as="h4">Danh sách người dùng</Card.Title>
-                {/* <p className="card-category">
+                <Card.Title as="h4">Danh sách người dùng quản trị</Card.Title>
+                <p className="card-category">
                  Thông tin 
-                </p> */}
+                </p>
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
                 <Table className="table-hover table-striped">
@@ -77,4 +79,4 @@ function TableList() {
   );
 }
 
-export default TableList;
+export default TableListUser;
