@@ -16,8 +16,9 @@ import {
   Col,
   Form,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-function Waiting() {
+function Website() {
   const [listTargets, setlistTargets] = useState([]);
   const [id,setId] = useState()
   useEffect(() => {
@@ -31,11 +32,13 @@ function Waiting() {
   const [url,setUrl] = useState()
   const [name,setName] = useState()
   console.log(url,name);
+
    const handleAddtarget =(e)=>{
     e.preventDefault()
     const data = {address:url,
       name:name}
-      axiosClient.put("targets", data).then(res=>{
+    axiosClient.put("targets", data).then(res=>{
+      // console.log(res)
     })
    }
 
@@ -45,7 +48,6 @@ function Waiting() {
    function getId(id){
     setShow(true)
     setId(id)
- 
    }
    const UpdateTarget = async()=>{
     const target = await axiosClient.post("/targets",{
@@ -106,11 +108,11 @@ function Waiting() {
                 <Card.Title as="h4">Thêm trang web</Card.Title>
               </Card.Header>
               <Card.Body>
-              <div >
+              {/* <div >
                   <p>
                   Rà soát xác minh mục tiêu cho phép bạn xác nhận quyền sở hữu trang web bạn muốn rà soát
                   </p>
-              </div>
+              </div> */}
               <div>
               <span style={{ fontWeight: 'bold' }}>Tên miền của bạn</span>
               <Form>
@@ -121,6 +123,7 @@ function Waiting() {
                   <option value="https://">https://</option>
                   </select>
                 </div> */}
+                <Col md="6">
                 <div className="form-group">
                   <input
                     className="form-control url"
@@ -129,6 +132,8 @@ function Waiting() {
                     onChange={e=>setUrl(e.target.value)}
                   />
                 </div>
+                </Col>
+                <Col md="6">
                 <div class="form-group">
                   <input
                     className="form-control url"
@@ -137,11 +142,13 @@ function Waiting() {
                     onChange={e=>setName(e.target.value)}
                   />
                 </div>
+                </Col>
+                
                 </Row> 
               </Form> 
               </div>
               <div>
-                
+{/*                 
                 <div>
                 <span style={{ fontWeight: 'bold' }}>Xác minh phương thức</span>
                 </div>
@@ -169,14 +176,14 @@ function Waiting() {
                   <span style={{ fontWeight: 'bold', marginLeft:20, fontSize:13, marginTop: 20}}>Click verify</span>
                   <span style={{ marginLeft:10, fontSize:13}}>bên dưới</span>
 
-                  </div>
+                  </div> */}
                   <Button
                     onClick={handleAddtarget}
                     className="btn-fill pull-right verify-website"
                     type="submit"
                     variant="info"
                   >
-                   XÁC MINH TRANG WEB
+                   THÊM TRANG WEB
                   </Button>
                 
               </div>
@@ -213,6 +220,11 @@ function Waiting() {
                             <Button type="button" onClick={(e)=>getId(item.id)}>
                                 Chỉnh sửa
                               </Button>
+                              <Button type="button" onClick={(e)=>getId(item.id)}>
+                                <Link to={`/admin/result?target_id=${item.id}`}> 
+                                Chi tiết
+                                </Link>
+                              </Button>
                             </td>
                             
                           </tr>
@@ -229,4 +241,4 @@ function Waiting() {
   );
 }
 
-export default Waiting;
+export default Website;
