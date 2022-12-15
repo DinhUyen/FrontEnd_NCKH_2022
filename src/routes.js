@@ -16,7 +16,7 @@
 
 */
 import Dashboard from "views/Dashboard.js";
-import newUser from "views/newUser.js";
+import newUser from "views/newUser";
 import UserProfile from "views/UserProfile.js";
 import TableListAdmin from "views/TableListAdmin.js";
 import TableListUser from "views/TableListUsers";
@@ -42,8 +42,8 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/user",
-    name: "newUser",
+    path: "/newuser",
+    name: "New User",
     icon: "nc-icon nc-circle-09",
     component: newUser,
     layout: "/admin"
@@ -67,14 +67,6 @@ const dashboardRoutes = [
     name: "List Users",
     icon: "nc-icon nc-notes",
     component: TableListUser,
-    layout: "/admin"
-  },
-
-  {
-    path: "/typography",
-    name: "Typography",
-    icon: "nc-icon nc-paper-2",
-    component: Typography,
     layout: "/admin"
   },
   {
