@@ -19,6 +19,7 @@ import React, { Component } from "react";
 import { useLocation } from "react-router-dom";
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
 
+
 import routes from "routes.js";
 import axiosClient from "service/axiosClient";
 import { useHistory } from "react-router-dom";
@@ -143,8 +144,7 @@ function Header() {
               <Nav.Item>
                 <Nav.Link
                   className="m-0"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
+                  href="/login"
                 >
                   <span className="no-icon">Log out</span>
                 </Nav.Link>
@@ -154,6 +154,7 @@ function Header() {
         </Container>
       </Navbar>
     </>
+
   );
 }
 

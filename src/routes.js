@@ -29,6 +29,7 @@ import Accepted from "views/accepted.js";
 import Setting from "views/setting.js";
 import SignUp from "views/signup.js"
 import SignIn from "views/signin.js"
+import Result from "views/result.js"
 import Vulnerability from "views/vulnerability.js"
 import Website from "views/website.js"
 
@@ -98,9 +99,16 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/vulnerability",
+    path: "/result",
     name: "Rà soát lỗ hổng",
     icon: "nc-icon nc-compass-05",
+    component: Result,
+    layout: "/admin"
+  },
+  {
+    path: "/vulnerability",
+    name: "Chi tiết lỗ hổng",
+    icon: "nc-icon nc-zoom-split",
     component: Vulnerability,
     layout: "/admin"
   },
