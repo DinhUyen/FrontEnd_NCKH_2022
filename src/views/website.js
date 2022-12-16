@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from 'react-bootstrap/Modal';
 import "../assets/css/switch.css"
+import "../assets/css/btn_vul.css"
 import { useEffect } from "react";
 import axiosClient from "service/axiosClient";
 // react-bootstrap components
@@ -57,6 +58,13 @@ function Website() {
     })
     
     setShow(false)
+   }
+   async function createScan(id){
+    console.log(id)
+    const res = await axiosClient.post("/scans",{
+      target_id:id
+    })
+    console.log(res)
    }
   return (
       
@@ -217,14 +225,25 @@ function Website() {
                             <td>{item.name}</td>
                             <td>{item.created_at}</td>
                             <td>
-                            <Button type="button" onClick={(e)=>getId(item.id)}>
-                                Chỉnh sửa
+                            <Button className="btn-table"
+                            onClick={(e)=>createScan(item.id)}
+                            type="button"
+                             >
+                              Bắt đầu quét
+                            </Button>
+                            <Button type="button" 
+                              className="btn-table btn-left" 
+                              onClick={(e)=>getId(item.id)}>
+                              Chỉnh sửa
+                            </Button>
+                            <Link to={`/admin/result?target_id=${item.id}`}> 
+                              <Button type="button" 
+                              className="btn-table btn-left" 
+                              > 
+                              Chi tiết
                               </Button>
-                              <Button type="button" onClick={(e)=>getId(item.id)}>
-                                <Link to={`/admin/result?target_id=${item.id}`}> 
-                                Chi tiết
-                                </Link>
-                              </Button>
+                            </Link>
+                             
                             </td>
                             
                           </tr>
