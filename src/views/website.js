@@ -116,11 +116,6 @@ function Website() {
                 <Card.Title as="h4">Thêm trang web</Card.Title>
               </Card.Header>
               <Card.Body>
-              {/* <div >
-                  <p>
-                  Rà soát xác minh mục tiêu cho phép bạn xác nhận quyền sở hữu trang web bạn muốn rà soát
-                  </p>
-              </div> */}
               <div>
               <span style={{ fontWeight: 'bold' }}>Tên miền của bạn</span>
               <Form>
@@ -156,35 +151,6 @@ function Website() {
               </Form> 
               </div>
               <div>
-{/*                 
-                <div>
-                <span style={{ fontWeight: 'bold' }}>Xác minh phương thức</span>
-                </div>
-                <br/>
-                <div>
-                  <span style={{ marginLeft:20,  marginTop: 20, color: 'navy'}}>Bước 1</span>
-                </div>
-                <div>
-                  <span style={{ marginLeft:20, fontSize:13, marginTop: 20}}>Tải về</span>
-                  <span style={{ marginLeft:10, fontSize:13, color: 'skyblue'}}>VulHunterVerify.html</span>
-
-                  </div>
-                  <div>
-                  <span style={{ marginLeft:20,  marginTop: 20, color: 'navy'}}>Bước 2</span>
-                </div>
-                <div>
-                  <span style={{ fontWeight: 'bold', marginLeft:20, fontSize:13, marginTop: 20}}>Upload</span>
-                  <span style={{ marginLeft:10, fontSize:13}}>Tập tin đến trang web của bạn</span>
-
-                  </div>
-                  <div>
-                  <span style={{ marginLeft:20,  marginTop: 20, color: 'navy'}}>Bước 3</span>
-                </div>
-                <div>
-                  <span style={{ fontWeight: 'bold', marginLeft:20, fontSize:13, marginTop: 20}}>Click verify</span>
-                  <span style={{ marginLeft:10, fontSize:13}}>bên dưới</span>
-
-                  </div> */}
                   <Button
                     onClick={handleAddtarget}
                     className="btn-fill pull-right verify-website"
